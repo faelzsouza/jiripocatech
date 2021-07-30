@@ -1,3 +1,5 @@
-html.no-js body main section.team-area.section-padding40.fix div.container div.team-active div.single-cat.text-center div.cat-icon img {
+main section.team-area.section-padding40.fix div.container div.team-active img{
     width: 193px;
+    border-radius: 50%;
+
 }
