@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 div#preloader-active div div div i {
     font-size: 4rem;
     color: #5d74ff;
