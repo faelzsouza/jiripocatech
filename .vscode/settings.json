@@ -2,13 +2,13 @@
     "sqltools.connections": [
         {
             "previewLimit": 50,
-            "server": "tuffi.db.elephantsql.com",
+            "server": "kesavan.db.elephantsql.com",
             "port": 5432,
             "driver": "PostgreSQL",
-            "name": "bancodBeaver",
-            "database": "hyucvvwf",
-            "username": "hyucvvwf",
-            "password": "ZmrnHdY6Ln8sNZ0Thlnu0ilM5yYkeX5m"
+            "name": "mod2projetofinal",
+            "database": "sttqhixt",
+            "username": "sttqhixt",
+            "password": "Z73EtDNO49C-9kEjp3rL6LZSYE7446Hz"
         }
     ]
 }
