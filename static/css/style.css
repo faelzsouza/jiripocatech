@@ -1,3 +1,17 @@
-html.no-js body main section.team-area.section-padding40.fix div.container div.team-active div.single-cat.text-center div.cat-icon img {
+html{
+    scroll-behavior: smooth;
+}
+
+div#preloader-active div div div i {
+    font-size: 4rem;
+    color: #5d74ff;
+}
+
+div.logo a{
+    font-size: 3rem;
+}
+
+main section.team-area div.container div.team-active div.single-cat div.cat-icon img{
     width: 193px;
+    border-radius: 50%;
 }

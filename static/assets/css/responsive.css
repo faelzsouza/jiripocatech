@@ -22,6 +22,11 @@
 /* small mobile :320px. */
 @media (max-width: 767px) {
 
+    section.about-area1.fix.pt-10 > div > div.right-content1 > div > div > iframe{
+        width: 70%;
+        display: block;
+        margin-left: auto;
+    }
  
 }
  
