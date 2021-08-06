@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Banco de dados</title>
+    <link rel="stylesheet" href="../static/css/add-style-temp.css">
+
+</head>
+<body>
+    <form action="/load_playlist" method="POST">
+        <label for="url-playlist">URL da Playlist: </label>
+        <input type="text" name="url-playlist" id="url-playlist">
+
+        <button type="submit" name="btn-playlist">Carregar Playlist</button>
+        
+    </form>
+
+    <form action="/new" method="POST">
+        <label for="id-playlist">ID da Playlist</label>
+        <input type="text" name="id-playlist" id="id-playlist" value={{id_playlist}}>
+        <label for="titulo-playlist">Título da Playlist</label>
+        <input type="text" name="titulo-playlist" id ="titulo-playlist">
+        <label for="descricao-playlist">Descição de Playlist</label>
+        <textarea name="descricao-playlist" rows="4" cols="50"></textarea>    
+        <button type="submit" name="btn-descr-playlist">Cadastrar</button>
+    </form>
+    
+    <section id="videos">
+    {% for i in playlist_videos %}
+    <div class="card-videos">
+        <img src="https://i.ytimg.com/vi/{{i[4]}}/mqdefault.jpg">
+        <p>{{i[0]}}</p>
+        <p>{{i[1]}}</p>
+        <p>{{i[2]}}</p>
+        <p>{{i[3]}}</p>
+        <p>{{i[4]}}</p>
+        <p>{{i[5]}}</p>
+    </div>
+    {% endfor %}
+    </section>
+</body>
+</html>
