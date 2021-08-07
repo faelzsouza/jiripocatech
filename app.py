@@ -14,13 +14,13 @@ class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     id_playlist = db.Column(db.String(50), nullable=False)
     titulo_playlist = db.Column(db.String(250), nullable=False)
-    instrutor = db.Column(db.String(100), nullable=False)
+    #instrutor = db.Column(db.String(100), nullable=False)
     descricao = db.Column(db.String(1000), nullable=False)
 
-    def __init__(self, id_playlist, titulo_playlist, instrutor, descricao):
+    def __init__(self, id_playlist, titulo_playlist,  descricao): #instrutor#
         self.id_playlist = id_playlist
         self.titulo_playlist = titulo_playlist
-        self.instrutor = instrutor
+        #self.instrutor = instrutor
         self.descricao = descricao
 
 # Rotas
@@ -31,7 +31,9 @@ def index():
 
 @app.route('/courses')
 def courses():
-    return render_template('courses.html')
+    playlist = Playlist.query.all()
+    return render_template('courses.html', playlist = playlist)
+
 
 @app.route('/about')
 def about():
@@ -59,7 +61,7 @@ def new():
         )
         db.session.add(playlist)
         db.session.commit()
-        return redirect('/')
+        return redirect('/courses')
     else:
         return redirect('/')
 # Adm - Adicionar - Fim
