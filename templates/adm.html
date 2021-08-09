@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Courses | Education</title>
+    <title>Cursos | ADM</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="../static/assets/img/favicon.ico">
+
+    <script src="https://kit.fontawesome.com/393656b2b8.js" crossorigin="anonymous"></script>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
@@ -21,18 +23,19 @@
     <link rel="stylesheet" href="../static/assets/css/slick.css">
     <link rel="stylesheet" href="../static/assets/css/nice-select.css">
     <link rel="stylesheet" href="../static/assets/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <!--? Preloader Start -->
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-                <img src="../static/assets/img/logo/loder.png" alt="">
-            </div>
+      <div class="preloader-inner position-relative">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img pere-text">
+          <i class="fas fa-fish"></i>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 <!-- Preloader Start -->
 <!-- Header Start -->
 <div class="header-area header-transparent">
@@ -43,7 +46,8 @@
                     <!-- Logo -->
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo">
-                            <a href="index.html"><img src="../static/assets/img/logo/logo.png" alt=""></a>
+                          <a href="/"
+                            ><i class="fas fa-fish"></i> JiripocaTech</a>
                         </div>
                     </div>
                     <div class="col-xl-10 col-lg-10">
@@ -79,12 +83,17 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">Editar</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">
+                                    {% if playlist == '' %} 
+                                    Adicionar
+                                    {% else %}
+                                    Editar 
+                                    {% endif %}                                   
+                                </h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Contact</a></li> 
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -103,29 +112,40 @@
                     <h2 class="contact-title">Get in Touch</h2>
                 </div> -->
                 <div class="col-lg-8">
-                    <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                    {% if playlist == '' %} 
+                     <form class="form-contact contact_form" action="/new" method="post" id="contactForm" novalidate="novalidate">
+                    {% else %}
+                        <form class="form-contact contact_form" action="/edit" method="post" id="contactForm" novalidate="novalidate">
+                    {% endif %}  
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="link">Link:</label>
-                                    <input class="form-control" name="link" id="link" type="text">
+                                    <input value={{playlist.id_playlist}} class="form-control" name="id-playlist" id="id-playlist" type="text">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="titulo-playlist">Título:</label>
-                                    <input class="form-control" name="titulo-playlist" id="titulo-playlist" type="text">
+                                    <input value={{playlist.titulo_playlist}} class="form-control" name="titulo-playlist" id="titulo-playlist" type="text">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="descricao-playlist">Descrição:</label>
-                                    <textarea class="form-control w-100" name="descricao-playlist" id="descricao-playlist" cols="30" rows="9"></textarea>
+                                    <textarea class="form-control w-100" name="descricao-playlist" id="descricao-playlist" cols="30" rows="9">{{playlist.descricao}} </textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <button type="submit" class="button boxed-btn">Editar</button>
+                            <button type="submit" class="button boxed-btn">
+                                {% if playlist == '' %} 
+                                Adicionar
+                                {% else %}
+                                Editar 
+                                {% endif %} 
+                            
+                            </button>
                         </div>
                     </form>
                 </div>

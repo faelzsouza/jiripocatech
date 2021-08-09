@@ -63,7 +63,7 @@
                                         <ul id="navigation">                                                                                          
                                             <li class="active" ><a href="/">Home</a></li>
                                             <li><a href="/courses">Cursos</a></li>
-                                            <li><a href="/about">Sobre Nós</a></li>
+                                            <li><a href="/#contatos">Sobre Nós</a></li>
                                             <!-- <li><a href="contact.html">Contact</a></li> -->
                                             <!-- Button -->
                                             <li class="button-header margin-left "><a href="#" class="btn">Cadastre-se</a></li>
@@ -86,14 +86,21 @@
     <main>
         <!--? slider Area Start-->
         <section class="slider-area slider-area2">
+            
+                <!-- <img src="/static/img/Webinar.gif" alt="imagem mulher vendo computador em uma mesa">  Alterar para um GIf Se der tempo-->
+            
             <div class="slider-active">
                 <!-- Single Slider -->
                 <div class="single-slider slider-height2">
                     <div class="container">
                         <div class="row">
+                            <!-- <div>
+                                <img src="/static/img/Webinar.gif" alt="imagem mulher vendo computador em uma mesa">
+                            </div> -->
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
                                     <h1 data-animation="bounceIn" data-delay="0.2s">Nossos Cursos</h1>
+                                    
                                     <!-- breadcrumb Start-->
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -120,18 +127,19 @@
                     </div>
                 </div>
                 <div class="row">
+                    {% for i in playlist %}
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/img/html5_css3.png" alt="imagem do logotipo HTML5 e CSS3"></a>
+                                    <a href="https://www.youtube.com/playlist?list={{i.id_playlist}}" target="_blank"><img src="../static/img/html5_css3.png" alt="imagem do logotipo HTML5 e CSS3"></a>
                                 </div>
+                           
                                 <div class="properties__caption">
-                                    <p>Curso HTML5 e CSS3</p>
-                                    <h3><a href="#">HTML5 | CSS3 </a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
+                                    <p>{{i.titulo_playlist}}</p>
+                                    <p>{{i.descricao}}
                                     </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
+                                    <!-- <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
                                             <div class="rating">
                                                 <i class="fas fa-star"></i>
@@ -145,173 +153,15 @@
                                         <div class="price">
                                             <span>R$:0</span>
                                         </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Mais detalhes</a>
+                                    </div> -->
+                                    <a href="https://www.youtube.com/playlist?list={{i.id_playlist}}" target="_blank" class="border-btn border-btn2">Mais detalhes</a>
                                 </div>
                             </div>
+                    
                         </div>
+                      
                     </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/img/JS.png" alt="Imagem do logotipo do JavaScript"></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>Curso JavaScript</p>
-                                    <h3><a href="#">JAVASCRIPT</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                        
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>R$:0</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Mais detalhes</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/img/python.png" alt="Imagem do logotipo do Python"></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>Curso Python</p>
-                                    <h3><a href="#">PYTHON</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                        
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>R$:0</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Mais detalhes</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/assets/img/gallery/featured4.png" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                        
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>$135</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/assets/img/gallery/featured5.png" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                        
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>$135</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/assets/img/gallery/featured6.png" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>$135</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                            </div>
+                    {% endfor %}  
                         </div>
                     </div>
                 </div>
