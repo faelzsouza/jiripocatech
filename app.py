@@ -16,11 +16,13 @@ class Playlist(db.Model):
     titulo_playlist = db.Column(db.String(250), nullable=False)
     #instrutor = db.Column(db.String(100), nullable=False)
     descricao = db.Column(db.String(1000), nullable=False)
+    #id_video1 = db.Column(db.String(50), nullable=False)
 
-    def __init__(self, id_playlist, titulo_playlist,  descricao): #instrutor#
+    def __init__(self, id_playlist, titulo_playlist, descricao): #instrutor, id_video1#
         self.id_playlist = id_playlist
         self.titulo_playlist = titulo_playlist
         #self.instrutor = instrutor
+        #self.id_video1
         self.descricao = descricao
 
 # Rotas
@@ -32,6 +34,8 @@ def index():
 @app.route('/courses')
 def courses():
     playlist = Playlist.query.all()
+    for i in playlist:
+        yt.playlist.id_playlist
     return render_template('courses.html', playlist = playlist)
 
 # Rota sobre nós

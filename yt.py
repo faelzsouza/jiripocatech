@@ -16,16 +16,16 @@ def get_videos(playlistId):
     data = []
     for i in playlist_videos:
         data.append(
-            [i['snippet']['title'],
-            i['snippet']['description'], 
-            i['snippet']['publishedAt'][:10],
-            i['snippet']['videoOwnerChannelTitle'],
-            i['snippet']['resourceId']['videoId'],
-            i['snippet']['channelTitle'],
-            i['snippet']['playlistId']]
+            [i['snippet']['title'],  # titulo do video [0]
+            i['snippet']['description'],  # descricao do video [1]
+            i['snippet']['publishedAt'][:10],  # data YYYY-mm-dd [2]
+            i['snippet']['videoOwnerChannelTitle'],  # nome do canal dono do video [3]
+            i['snippet']['resourceId']['videoId'],  # ID do video [4]
+            i['snippet']['channelTitle'],  # nome do canal dono da playlist [5]
+            i['snippet']['playlistId']]  # Id da playlist [6]
             )
     
     return data
 
 # ytube = get_videos('PLR8JXremim5DINkBLBDDhjVah5kWKFWxk')
-# print(ytube)
+# print(ytube[0][4])

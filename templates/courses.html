@@ -128,11 +128,15 @@
                 </div>
                 <div class="row">
                     {% for i in playlist %}
+                        <span>{{i.first_video}}</span>
+                        <span>{{i.titulo_playlist}}</span>
+                    {% endfor %}
+                    {% for i in playlist %}
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="https://www.youtube.com/playlist?list={{i.id_playlist}}" target="_blank"><img src="../static/img/html5_css3.png" alt="imagem do logotipo HTML5 e CSS3"></a>
+                                    <a href="https://www.youtube.com/playlist?list={{i.id_playlist}}" target="_blank"><img src="https://i.ytimg.com/vi/{{i.first_video}}/hqdefault.jpg" alt="imagem do logotipo HTML5 e CSS3"></a>
                                 </div>
                            
                                 <div class="properties__caption">
