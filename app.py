@@ -67,7 +67,7 @@ def edit():
         return redirect('/adm')
     return render_template('adm.html', playlist = playlist) 
 
-
+# rota NEW para adicionar ao banco
 @app.route('/new', methods=['GET', 'POST'])
 def new():
     if request.method == 'POST':
@@ -83,10 +83,17 @@ def new():
         return redirect('/adicionar')
     else:
         return redirect('/adicionar')
-# Adm - Adicionar - Fim
+
+# Rota Listar Videos da Playlist
+@app.route('/video_list/<id_playlist>')
+def listar_videos(id_playlist):
+    id_playlist = id_playlist[1:-1]
+    videos = yt.get_videos(id_playlist)
+    return render_template('video_list.html', videos=videos)
+
+
 
 # Executa o server
-
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True)

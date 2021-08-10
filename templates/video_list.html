@@ -127,17 +127,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    {% for i in playlist %}
+                    {% for i in videos %}
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="/video_list/<{{i.id_playlist}}>" target="_blank"><img src="https://i.ytimg.com/vi/{{i.id_video1}}/hqdefault.jpg" alt="imagem do logotipo HTML5 e CSS3"></a>
+                                    <a href="https://www.youtube.com/watch?v={{i[4]}}" target="_blank"><img src="https://i.ytimg.com/vi/{{i[4]}}/hqdefault.jpg" alt="imagem do logotipo HTML5 e CSS3"></a>
                                 </div>
                            
                                 <div class="properties__caption">
-                                    <p>{{i.titulo_playlist}}</p>
-                                    <p>{{i.descricao}}
+                                    <p>{{i[0]}}</p>
+                                    <p>{{i[1]}}
                                     </p>
                                     <!-- <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
@@ -154,7 +154,7 @@
                                             <span>R$:0</span>
                                         </div>
                                     </div> -->
-                                    <a href="/video_list/<{{i.id_playlist}}>" target="_blank" class="border-btn border-btn2">Mais detalhes</a>
+                                    <a href="https://www.youtube.com/playlist?list={{i.id_playlist}}" target="_blank" class="border-btn border-btn2">Mais detalhes</a>
                                 </div>
                             </div>
                     
