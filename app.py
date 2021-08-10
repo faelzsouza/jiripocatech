@@ -14,15 +14,15 @@ class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     id_playlist = db.Column(db.String(50), nullable=False)
     titulo_playlist = db.Column(db.String(250), nullable=False)
-    #instrutor = db.Column(db.String(100), nullable=False)
+    instrutor = db.Column(db.String(100), nullable=False)
     descricao = db.Column(db.String(1000), nullable=False)
-    #id_video1 = db.Column(db.String(50), nullable=False)
+    id_video1 = db.Column(db.String(50), nullable=False)
 
-    def __init__(self, id_playlist, titulo_playlist, descricao): #instrutor, id_video1#
+    def __init__(self, id_playlist, titulo_playlist, descricao, instrutor): #instrutor, id_video1#
         self.id_playlist = id_playlist
         self.titulo_playlist = titulo_playlist
-        #self.instrutor = instrutor
-        #self.id_video1
+        self.instrutor = instrutor
+        self.id_video1 = yt.get_videos(id_playlist)[0][4]
         self.descricao = descricao
 
 # Rotas
@@ -34,8 +34,6 @@ def index():
 @app.route('/courses')
 def courses():
     playlist = Playlist.query.all()
-    for i in playlist:
-        yt.playlist.id_playlist
     return render_template('courses.html', playlist = playlist)
 
 # Rota sobre nós
@@ -52,14 +50,14 @@ def adicionar():
 @app.route('/<id>', methods=['GET', 'POST'])
 def id():
     playlists = Playlist.query.all()
-    playlist = playlist.query.get(id)
+    playlist = playlists.query.get(id)
     return render_template('adm.html', playlist = playlist)    
 
 # ROTA EDIT
 @app.route('/edit/<id>', methods=['GET', 'POST'])
 def edit():
     playlists = Playlist.query.all()
-    playlist = playlist.query.get(id)
+    playlist = Playlist.query.get(id)
     if request.method == 'POST':
         playlist.id_playlist = request.form['id-playlist']
         playlist.titulo_playlist = request.form['titulo-playlist']
@@ -70,26 +68,21 @@ def edit():
     return render_template('adm.html', playlist = playlist) 
 
 
-@app.route('/load_playlist', methods=['GET', 'POST'])
-def load_playlist():
-    if request.method == 'POST':
-        id_playlist = request.form['url-playlist'].split('=')[1]
-        playlist_videos = yt.get_videos(id_playlist)
-        return render_template('index.html', id_playlist=id_playlist, playlist_videos=playlist_videos)
-
 @app.route('/new', methods=['GET', 'POST'])
 def new():
     if request.method == 'POST':
         playlist = Playlist(
-            request.form['id-playlist'],
+            request.form['id-playlist'].split('=')[1],
             request.form['titulo-playlist'],
-            request.form['descricao-playlist']
+            request.form['descricao-playlist'],
+            request.form['instrutor']
         )
         db.session.add(playlist)
         db.session.commit()
-        return redirect('/courses')
+        db.session.close()
+        return redirect('/adicionar')
     else:
-        return redirect('/')
+        return redirect('/adicionar')
 # Adm - Adicionar - Fim
 
 # Executa o server
