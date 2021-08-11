@@ -63,12 +63,14 @@
                                         <ul id="navigation">                                                                                          
                                             <li class="active" ><a href="/">Home</a></li>
                                             <li><a href="/courses">Cursos</a></li>
+                                            {% if usuario=='logado' %}
                                             <li class="active"><a href="/adicionar">Adicionar</a></li>
+                                            {% endif %}
                                             <li><a href="/#contatos">Sobre Nós</a></li>
                                             <!-- <li><a href="contact.html">Contact</a></li> -->
                                             <!-- Button -->
                                             <li class="button-header margin-left "><a href="#" class="btn">Cadastre-se</a></li>
-                                            <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
+                                            <li class="button-header"><a href="/login" class="btn btn3">Log in</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -156,7 +158,9 @@
                                         </div>
                                     </div> -->
                                     <a href="/video_list/<{{i.id_playlist}}>" target="_blank" class="border-btn border-btn2">Mais detalhes</a>
+                                    {% if usuario=='logado' %}
                                     <a href="/edit/{{i.id}}" target="_blank" class="border-btn border-btn2">Editar</a>
+                                    {% endif %}
                                     <!-- <a href="/video_list/<{{i.id_playlist}}>" target="_blank" class="border-btn border-btn2">Apagar</a> apagar, colocar id_playlista -->
                                 </div>
                             </div>
