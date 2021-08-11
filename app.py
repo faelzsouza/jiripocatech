@@ -87,6 +87,8 @@ def id():
     
     playlists = Playlist.query.all()
     playlist = Playlist.query.get(id)
+
+    deletePlaylist = playlist
     return render_template('adm.html', playlist = playlist, titulo='Editar')
 
 # ROTA EDIT
