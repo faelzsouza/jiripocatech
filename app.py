@@ -34,9 +34,13 @@ def index():
 
 # Rota Cursos
 @app.route('/courses')
-def courses(usuario='undefined'):
+def courses():
     playlist = Playlist.query.all()
-    return render_template('courses.html', playlist = playlist, usuario=usuario)
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        playlist = Playlist.query.all()
+        return render_template('courses.html', playlist = playlist)
+    else:
+        return render_template('courses.html', playlist = playlist, usuario='admin')
 
 # Rota sobre nós
 @app.route('/about')
@@ -56,7 +60,7 @@ def auth():
       session['usuario_logado'] = 'admin' # Adiciona um usuario na sessão
       flash('Login feito com sucesso!') # Envia mensagem de sucesso
       playlist = Playlist.query.all()
-      return redirect(url_for('courses', usuario='logado')) # Redireciona para a rota adm
+      return redirect('/courses') # Redireciona para a rota adm
     else: # Se a senha estiver errada, faça:
       flash('Erro no login, tente novamente!')  # Envia mensagem de erro
       return redirect('/login') # Redireciona para a rota login
@@ -124,7 +128,7 @@ def new():
 # Rota Listar Videos da Playlist
 @app.route('/video_list/<id_playlist>')
 def listar_videos(id_playlist):
-    id_playlist = id_playlist[1:-1]
+    id_playlist = id_playlist
     videos = yt.get_videos(id_playlist)
     return render_template('video_list.html', videos=videos)
 
