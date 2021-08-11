@@ -1,0 +1,14 @@
+section#videos {
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section#videos class.card-videos {
+    display: flex;
+    width: 25rem;
+}
+
+section#videos class.card-videos p {
+    display: flex;
+}
