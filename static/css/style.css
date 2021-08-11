@@ -35,5 +35,12 @@ main section.slider-area.slider-area2  img {
     float:right;
 }  */
 
+/* #card-playlist{
+    height: 50vh;
+} */
 
+#descricao{
+    height: 20rem;
+    overflow-y: auto;
+}
 

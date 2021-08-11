@@ -63,6 +63,7 @@
                                         <ul id="navigation">                                                                                          
                                             <li class="active" ><a href="/">Home</a></li>
                                             <li><a href="/courses">Cursos</a></li>
+                                            <li class="active"><a href="/adicionar">Adicionar</a></li>
                                             <li><a href="/#contatos">Sobre Nós</a></li>
                                             <!-- <li><a href="contact.html">Contact</a></li> -->
                                             <!-- Button -->
@@ -135,9 +136,9 @@
                                     <a href="/video_list/<{{i.id_playlist}}>" target="_blank"><img src="https://i.ytimg.com/vi/{{i.id_video1}}/hqdefault.jpg" alt="imagem do logotipo HTML5 e CSS3"></a>
                                 </div>
                            
-                                <div class="properties__caption">
+                                <div class="properties__caption" id='card-playlist'>
                                     <p>{{i.titulo_playlist}}</p>
-                                    <p>{{i.descricao}}
+                                    <!-- <p id="descricao">{{i.descricao}} -->
                                     </p>
                                     <!-- <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
@@ -155,6 +156,8 @@
                                         </div>
                                     </div> -->
                                     <a href="/video_list/<{{i.id_playlist}}>" target="_blank" class="border-btn border-btn2">Mais detalhes</a>
+                                    <a href="/edit/{{i.id}}" target="_blank" class="border-btn border-btn2">Editar</a>
+                                    <!-- <a href="/video_list/<{{i.id_playlist}}>" target="_blank" class="border-btn border-btn2">Apagar</a> apagar, colocar id_playlista -->
                                 </div>
                             </div>
                     
