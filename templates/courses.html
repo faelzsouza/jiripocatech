@@ -63,11 +63,14 @@
                                         <ul id="navigation">                                                                                          
                                             <li class="active" ><a href="/">Home</a></li>
                                             <li><a href="/courses">Cursos</a></li>
+                                            {% if usuario=='admin' %}
+                                            <li class="active"><a href="/adicionar">Adicionar</a></li>
+                                            {% endif %}
                                             <li><a href="/#contatos">Sobre Nós</a></li>
                                             <!-- <li><a href="contact.html">Contact</a></li> -->
                                             <!-- Button -->
                                             <li class="button-header margin-left "><a href="#" class="btn">Cadastre-se</a></li>
-                                            <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
+                                            <li class="button-header"><a href="/login" class="btn btn3">Log in</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -122,7 +125,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mb-55">
-                            <h2>Conheça nossos cursos gratuitos</h2>
+                            <h2>Conheça nossos cursos</h2>
                         </div>
                     </div>
                 </div>
@@ -132,12 +135,12 @@
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="https://www.youtube.com/playlist?list={{i.id_playlist}}" target="_blank"><img src="../static/img/html5_css3.png" alt="imagem do logotipo HTML5 e CSS3"></a>
+                                    <a href="/video_list/<{{i.id_playlist}}>" target="_blank"><img src="https://i.ytimg.com/vi/{{i.id_video1}}/hqdefault.jpg" alt="imagem do logotipo HTML5 e CSS3"></a>
                                 </div>
                            
-                                <div class="properties__caption">
+                                <div class="properties__caption" id='card-playlist'>
                                     <p>{{i.titulo_playlist}}</p>
-                                    <p>{{i.descricao}}
+                                    <p id="descricao">{{i.descricao}}
                                     </p>
                                     <!-- <div class="properties__footer d-flex justify-content-between align-items-center">
                                         <div class="restaurant-name">
@@ -154,7 +157,11 @@
                                             <span>R$:0</span>
                                         </div>
                                     </div> -->
-                                    <a href="https://www.youtube.com/playlist?list={{i.id_playlist}}" target="_blank" class="border-btn border-btn2">Mais detalhes</a>
+                                    <a href="/video_list/{{i.id_playlist}}" target="_blank" class="border-btn border-btn2">Mais detalhes</a>
+                                    {% if usuario=='admin' %}
+                                    <a href="/edit/{{i.id}}" target="_blank" class="border-btn border-btn2">Editar</a>
+                                    {% endif %}
+                                    <!-- <a href="/video_list/<{{i.id_playlist}}>" target="_blank" class="border-btn border-btn2">Apagar</a> apagar, colocar id_playlista -->
                                 </div>
                             </div>
                     
