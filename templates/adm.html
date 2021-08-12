@@ -1,0 +1,217 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Cursos | ADM</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/img/favicon.ico">
+
+    <script src="https://kit.fontawesome.com/393656b2b8.js" crossorigin="anonymous"></script>
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/assets/css/slicknav.css">
+    <link rel="stylesheet" href="../static/assets/css/animate.min.css">
+    <link rel="stylesheet" href="../static/assets/css/hamburgers.min.css">
+    <link rel="stylesheet" href="../static/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../static/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../static/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../static/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../static/assets/css/slick.css">
+    <link rel="stylesheet" href="../static/assets/css/nice-select.css">
+    <link rel="stylesheet" href="../static/assets/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+   <!-- ? Preloader Start -->
+   <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img pere-text">
+          <i class="fas fa-fish"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Preloader Start -->
+  <header>
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+      <div class="main-header">
+        <div class="header-bottom header-sticky">
+          <div class="container-fluid">
+            <div class="row align-items-center">
+              <!-- Logo -->
+              <div class="col-xl-2 col-lg-2">
+                <div class="logo">
+                  <a href="/"
+                    ><i class="fas fa-fish"></i> JiripocaTech</a>
+                </div>
+              </div>
+              <div class="col-xl-10 col-lg-10">
+                <div
+                  class="
+                    menu-wrapper
+                    d-flex
+                    align-items-center
+                    justify-content-end
+                  "
+                >
+                <!-- Main-menu -->
+                            <div class="main-menu d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">                                                                                          
+                                        <li class="active" ><a href="/">Home</a></li>
+                                        <li><a href="/courses">Cursos</a></li>                       
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div> 
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<main>
+    <!--? slider Area Start-->
+    <section class="slider-area slider-area2">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">
+                                    {{ titulo }}
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+            </div>
+        </div>
+    </section>
+    <!--?  Contact Area start  -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col-12">
+                    <h2 class="contact-title">Get in Touch</h2>
+                </div> -->
+                <div class="col-lg-8">
+                    {% if playlist == '' %} 
+                     <form class="form-contact contact_form" action="/new" method="POST" id="contactForm" novalidate="novalidate">
+                    {% else %}
+                        <form class="form-contact contact_form" action="/edit/{{playlist.id}}" method="POST" id="contactForm" novalidate="novalidate">
+                    {% endif %}  
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="link">Link:</label>
+                                    <input class="form-control" name="id-playlist" id="id-playlist" type="text" value="https://youtube.com/playlist?list={{playlist.id_playlist}}">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="titulo-playlist">Título:</label>
+                                    <input  class="form-control" name="titulo-playlist" id="titulo-playlist" type="text" value="{{playlist.titulo_playlist}}">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="Instrutor">Instrutor:</label>
+                                    <input class="form-control" name="instrutor" id="instrutor" type="text" value="{{playlist.instrutor}}">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="descricao-playlist">Descrição:</label>
+                                    <textarea class="form-control w-100" name="descricao-playlist" id="descricao-playlist" cols="30" rows="9">{{playlist.descricao}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button type="submit" class="button boxed-btn">
+                                {% if playlist == '' %} 
+                                Adicionar
+                                {% else %}
+                                Salvar 
+                                {% endif %} 
+                            
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    {% if deletePlaylist != undefined %}
+    <section class="modal">
+       <div id="card">
+
+          <a href="/courses" id="fechar"><i class="fa fa-times" aria-hidden="true"></i></a>
+          <h2>Confirmação</h2>
+          <hr>
+
+          <p>Deseja realmente apagar a playlist: {{playlist.titulo_playlist}} </p>
+          <div id="btns">
+             <a class="btn-cancelar" id="close" href="/courses">Cancelar</a>
+             <a class="btn-apagar" href="/delete/{{playlist.id}}">Apagar</a>
+          </div>
+       </div>
+    </section>
+    {% endif %}
+    <!-- Contact Area End -->
+</main>
+  <div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+<!-- JS here -->
+
+<script src="../static/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="../static/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="../static/assets/js/popper.min.js"></script>
+<script src="../static/assets/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="../static/assets/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="../static/assets/js/owl.carousel.min.js"></script>
+<script src="../static/assets/js/slick.min.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="../static/assets/js/wow.min.js"></script>
+<script src="../static/assets/js/animated.headline.js"></script>
+<script src="../static/assets/js/jquery.magnific-popup.js"></script>
+
+<!-- Date Picker -->
+<script src="../static/assets/js/gijgo.min.js"></script>
+<!-- Nice-select, sticky -->
+<script src="../static/assets/js/jquery.nice-select.min.js"></script>
+<script src="../static/assets/js/jquery.sticky.js"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="../static/assets/js/jquery.counterup.min.js"></script>
+<script src="../static/assets/js/waypoints.min.js"></script>
+<script src="../static/assets/js/jquery.countdown.min.js"></script>
+<script src="../static/assets/js/hover-direction-snake.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->	
+<script src="../static/assets/js/plugins.js"></script>
+<script src="../static/assets/js/main.js"></script>
+
+</body>
+</html>
