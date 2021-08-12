@@ -78,19 +78,6 @@ def adicionar():
       return redirect('/login') # Redireciona para o login
     return render_template('adm.html', playlist = '')
 
-# ROTA EDITAR
-@app.route('/<id>', methods=['GET', 'POST'])
-def id():
-    if 'usuario_logado' not in session or session['usuario_logado'] == None:
-      flash('Faça o login antes de entrar nessa rota!') # Mensagem de erro
-      return redirect('/login') # Redireciona para o login
-    
-    playlists = Playlist.query.all()
-    playlist = Playlist.query.get(id)
-
-    deletePlaylist = playlist
-    return render_template('adm.html', playlist = playlist, titulo='Editar')
-
 # ROTA EDIT
 @app.route('/edit/<id>', methods=['GET', 'POST'])
 def edit(id):
@@ -110,6 +97,31 @@ def edit(id):
         return redirect('/courses')
     return render_template('adm.html', playlist = playlist, titulo='Editar') 
 
+# ROTA para ativar modal de confirmação para deletar playlist
+@app.route('/<id>', methods=['GET', 'POST'])
+def id(id):
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+      flash('Faça o login antes de entrar nessa rota!') # Mensagem de erro
+      return redirect('/login') # Redireciona para o login
+    
+    playlists = Playlist.query.all()
+    playlist = Playlist.query.get(id)
+
+    deletePlaylist = playlist
+    return render_template('adm.html', playlist = playlist, titulo='Editar', deletePlaylist = deletePlaylist)
+
+# Rota para deletar uma playlist
+@app.route('/delete/<id>')
+def delete(id):
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+      flash('Faça o login antes de entrar nessa rota!') # Mensagem de erro
+      return redirect('/login') # Redireciona para o login
+    playlists = Playlist.query.all()
+    playlist = Playlist.query.get(id)
+    db.session.delete(playlist)
+    db.session.commit()
+    return redirect('/courses')
+
 # rota NEW para adicionar ao banco
 @app.route('/new', methods=['GET', 'POST'])
 def new():
@@ -123,9 +135,9 @@ def new():
         db.session.add(playlist)
         db.session.commit()
         db.session.close()
-        return redirect('/adicionar')
+        return redirect('/courses')
     else:
-        return redirect('/adicionar')
+        return redirect('/courses')
 
 # Rota Listar Videos da Playlist
 @app.route('/video_list/<id_playlist>')

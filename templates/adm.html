@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="../static/assets/css/style.css">
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
-<!--? Preloader Start -->
-<div id="preloader-active">
+   <!-- ? Preloader Start -->
+   <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
       <div class="preloader-inner position-relative">
         <div class="preloader-circle"></div>
@@ -36,23 +36,31 @@
       </div>
     </div>
   </div>
-<!-- Preloader Start -->
-<!-- Header Start -->
-<div class="header-area header-transparent">
-    <div class="main-header ">
-        <div class="header-bottom  header-sticky">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <!-- Logo -->
-                    <div class="col-xl-2 col-lg-2">
-                        <div class="logo">
-                          <a href="/"
-                            ><i class="fas fa-fish"></i> JiripocaTech</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-10 col-lg-10">
-                        <div class="menu-wrapper d-flex align-items-center justify-content-end">
-                            <!-- Main-menu -->
+  <!-- Preloader Start -->
+  <header>
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+      <div class="main-header">
+        <div class="header-bottom header-sticky">
+          <div class="container-fluid">
+            <div class="row align-items-center">
+              <!-- Logo -->
+              <div class="col-xl-2 col-lg-2">
+                <div class="logo">
+                  <a href="/"
+                    ><i class="fas fa-fish"></i> JiripocaTech</a>
+                </div>
+              </div>
+              <div class="col-xl-10 col-lg-10">
+                <div
+                  class="
+                    menu-wrapper
+                    d-flex
+                    align-items-center
+                    justify-content-end
+                  "
+                >
+                <!-- Main-menu -->
                             <div class="main-menu d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">                                                                                          
@@ -157,6 +165,22 @@
             </div>
         </div>
     </section>
+    {% if deletePlaylist != undefined %}
+    <section class="modal">
+       <div id="card">
+
+          <a href="/courses" id="fechar"><i class="fa fa-times" aria-hidden="true"></i></a>
+          <h2>Confirmação</h2>
+          <hr>
+
+          <p>Deseja realmente apagar a playlist: {{playlist.titulo_playlist}} </p>
+          <div id="btns">
+             <a class="btn-cancelar" id="close" href="/courses">Cancelar</a>
+             <a class="btn-apagar" href="/delete/{{playlist.id}}">Apagar</a>
+          </div>
+       </div>
+    </section>
+    {% endif %}
     <!-- Contact Area End -->
 </main>
   <div id="back-top" >
