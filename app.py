@@ -18,7 +18,7 @@ class Playlist(db.Model):
     descricao = db.Column(db.String(1000), nullable=False)
     id_video1 = db.Column(db.String(50), nullable=False)
 
-    def __init__(self, id_playlist, titulo_playlist, descricao, instrutor): #instrutor, id_video1#
+    def __init__(self, id_playlist, titulo_playlist, descricao, instrutor): #instrutor, id_video1
         self.id_playlist = id_playlist
         self.titulo_playlist = titulo_playlist
         self.instrutor = instrutor
@@ -50,32 +50,32 @@ def about():
 # Rota Login
 @app.route('/login')
 def login():
-    session['usuario_logado'] = None # Desloga o usuario
+    session['usuario_logado'] = None
     return render_template('login.html')
 
 # rota autenticação
 @app.route('/auth', methods=['GET', 'POST']) # Rota de autenticação
 def auth():
-    if request.form['senha'] == chave_secreta: # Se a senha for 'admin' faça:
-      session['usuario_logado'] = 'admin' # Adiciona um usuario na sessão
-      #flash('Login feito com sucesso!') # Envia mensagem de sucesso
+    if request.form['senha'] == chave_secreta: 
+      session['usuario_logado'] = 'admin' 
+      #flash('Login feito com sucesso!') 
       playlist = Playlist.query.all()
-      return redirect('/courses') # Redireciona para a rota adm
+      return redirect('/courses') 
     else: # Se a senha estiver errada, faça:
-      #flash('Erro no login, tente novamente!')  # Envia mensagem de erro
+      #flash('Erro no login, tente novamente!')
       return redirect('/login') # Redireciona para a rota login
 
 @app.route('/logout') # Rota para deslogar
 def logout():
    session['usuario_logado'] = None # Deixa o usuario_logado vazio
-   return redirect('/login') # Redireciona para a rota principal (index.html)
+   return redirect('/login')
 
 # Adm - Adicionar - Início
 @app.route('/adicionar')
 def adicionar():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
       #flash('Faça o login antes de entrar nessa rota!') # Mensagem de erro
-      return redirect('/login') # Redireciona para o login
+      return redirect('/login')
     return render_template('adm.html', playlist = '')
 
 # ROTA EDIT
@@ -83,8 +83,8 @@ def adicionar():
 def edit(id):
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
       #flash('Faça o login antes de entrar nessa rota!') # Mensagem de erro
-      return redirect('/login') # Redireciona para o login
-    
+      return redirect('/login') 
+
     playlists = Playlist.query.all()
     playlist = Playlist.query.get(id)
     if request.method == 'POST':
