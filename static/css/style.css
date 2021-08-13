@@ -2,6 +2,14 @@ html{
     scroll-behavior: smooth;
 }
 
+body > main > video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 div#preloader-active div div div i {
     font-size: 4rem;
     color: #5d74ff;
