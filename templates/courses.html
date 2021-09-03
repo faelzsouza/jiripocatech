@@ -63,11 +63,17 @@
                                         <ul id="navigation">                                                                                          
                                             <li class="active" ><a href="/">Home</a></li>
                                             <li><a href="/courses">Cursos</a></li>
-                                            <li><a href="/about">Sobre Nós</a></li>
+                                            <li><a href="/#contatos">Sobre Nós</a></li>
                                             <!-- <li><a href="contact.html">Contact</a></li> -->
                                             <!-- Button -->
-                                            <li class="button-header margin-left "><a href="#" class="btn">Cadastre-se</a></li>
-                                            <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
+                                            {% if usuario=='admin' %}
+                                            <li class="button-header margin-left "><a href="/adicionar" class="btn">Adicionar</a></li>
+                                            {% endif %}
+                                            {% if usuario!='admin' %}
+                                            <li class="button-header"><a href="/login" class="btn btn3">Log in</a></li>
+                                            {% else %}
+                                            <li class="button-header"><a href="/" class="btn btn3">Log out</a></li>
+                                            {% endif %}
                                         </ul>
                                     </nav>
                                 </div>
@@ -86,6 +92,9 @@
     <main>
         <!--? slider Area Start-->
         <section class="slider-area slider-area2">
+            
+                <!-- <img src="/static/img/Webinar.gif" alt="imagem mulher vendo computador em uma mesa">  Alterar para um GIf Se der tempo-->
+            
             <div class="slider-active">
                 <!-- Single Slider -->
                 <div class="single-slider slider-height2">
@@ -93,15 +102,7 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="bounceIn" data-delay="0.2s">Nossos Cursos</h1>
-                                    <!-- breadcrumb Start-->
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <!-- <li class="breadcrumb-item"><a href="index.html">Home</a></li> -->
-                                            <!-- <li class="breadcrumb-item"><a href="#">Services</a></li>  -->
-                                        </ol>
-                                    </nav>
-                                    <!-- breadcrumb End -->
+                                    <h1 data-animation="bounceIn" data-delay="0.2s">Nosso catálogo de cursos</h1>
                                 </div>
                             </div>
                         </div>
@@ -115,374 +116,51 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mb-55">
-                            <h2>Conheça nossos cursos gratuitos</h2>
+                            <h2>Conheça os cursos</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    {% for i in playlist %}
                     <div class="col-lg-4">
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/img/html5_css3.png" alt="imagem do logotipo HTML5 e CSS3"></a>
+                                    <a href="https://www.youtube.com/playlist?list={{i.id_playlist}}" target="_blank"><img src="https://i.ytimg.com/vi/{{i.id_video1}}/hqdefault.jpg" alt="imagem do logotipo HTML5 e CSS3"></a>
                                 </div>
-                                <div class="properties__caption">
-                                    <p>Curso HTML5 e CSS3</p>
-                                    <h3><a href="#">HTML5 | CSS3 </a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
+                           
+                                <div class="properties__caption" id='card-playlist'>
+                                    <p id="titulo-curso">{{i.titulo_playlist}}</p>
+                                    <p id="descricao-curso">{{i.descricao}}
                                     </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
+                                    <div class="button-group-area">
+                                        <div class="row">
+                                            <a href="https://www.youtube.com/playlist?list={{i.id_playlist}}" target="_blank" class="genric-btn primary-border radius e-large">Acessar</a>
                                         </div>
-                                        <div class="price">
-                                            <span>R$:0</span>
+                                        {% if usuario=='admin' %}
+                                        <div class="row">
+                                        <a href="/edit/{{i.id}}" target="_blank" class="genric-btn info-border radius e-large">Editar</a>
                                         </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Mais detalhes</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/img/JS.png" alt="Imagem do logotipo do JavaScript"></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>Curso JavaScript</p>
-                                    <h3><a href="#">JAVASCRIPT</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                        
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
+                                        <div class="row">
+                                        <a href="/{{i.id}}" target="_blank" class="genric-btn danger-border radius e-large">Apagar</a>
                                         </div>
-                                        <div class="price">
-                                            <span>R$:0</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Mais detalhes</a>
-                                </div>
+                                        {% endif %}
                                 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/img/python.png" alt="Imagem do logotipo do Python"></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>Curso Python</p>
-                                    <h3><a href="#">PYTHON</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                        
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>R$:0</span>
-                                        </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Mais detalhes</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/assets/img/gallery/featured4.png" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                        
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>$135</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/assets/img/gallery/featured5.png" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                        
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>$135</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="../static/assets/img/gallery/featured6.png" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>User Experience</p>
-                                    <h3><a href="#">Fundamental of UX for Application design</a></h3>
-                                    <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                        <div class="price">
-                                            <span>$135</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
                                 </div>
                             </div>
+                    
                         </div>
+                      
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8">
-                        <div class="section-tittle text-center mt-40">
-                            <a href="#" class="border-btn">Mais</a>
+                    {% endfor %}  
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Courses area End -->
-        <!--? top subjects Area Start -->
-        <div class="topic-area">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8">
-                        <div class="section-tittle text-center mb-55">
-                            <h2>Explore por tópicos</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="../static/assets/img/gallery/topic1.png" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="../static/assets/img/gallery/topic2.png" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="../static/assets/img/gallery/topic3.png" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="../static/assets/img/gallery/topic4.png" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="../static/assets/img/gallery/topic5.png" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="../static/assets/img/gallery/topic6.png" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="../static/assets/img/gallery/topic7.png" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="../static/assets/img/gallery/topic8.png" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <!-- <div class="col-xl-12">
-                        <div class="section-tittle text-center mt-20">
-                            <a href="courses.html" class="border-btn">View More Subjects</a>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
         </div>
-        <!-- top subjects End -->  
-        <!-- ? services-area -->
-        <!-- <div class="services-area services-area2 section-padding40">
-            <div class="container">
-                <div class="row justify-content-sm-center">
-                    <div class="col-lg-4 col-md-6 col-sm-8">
-                        <div class="single-services mb-30">
-                            <div class="features-icon">
-                                <img src="../static/assets/img/icon/icon1.svg" alt="">
-                            </div>
-                            <div class="features-caption">
-                                <h3>60+ UX courses</h3>
-                                <p>The automated process all your website tasks.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-8">
-                        <div class="single-services mb-30">
-                            <div class="features-icon">
-                                <img src="../static/assets/img/icon/icon2.svg" alt="">
-                            </div>
-                            <div class="features-caption">
-                                <h3>Expert instructors</h3>
-                                <p>The automated process all your website tasks.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-8">
-                        <div class="single-services mb-30">
-                            <div class="features-icon">
-                                <img src="../static/assets/img/icon/icon3.svg" alt="">
-                            </div>
-                            <div class="features-caption">
-                                <h3>Life time access</h3>
-                                <p>The automated process all your website tasks.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </main>
     <footer>
         <div class="footer-wrappper footer-bg">
@@ -629,7 +307,6 @@
     <script src="../static/assets/js/hover-direction-snake.min.js"></script>
 
     <!-- contact js -->
-    <script src="../static/assets/js/contact.js"></script>
     <script src="../static/assets/js/jquery.form.js"></script>
     <script src="../static/assets/js/jquery.validate.min.js"></script>
     <script src="../static/assets/js/mail-script.js"></script>

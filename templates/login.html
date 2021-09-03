@@ -3,13 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> App landing</title>
+    <title> JiripocaTech | Login </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="../static/assets/img/favicon.ico">
-
-	<!-- CSS here -->
+    
+    <script src="https://kit.fontawesome.com/393656b2b8.js" crossorigin="anonymous"></script>
+	
+    <!-- CSS here -->
 	<link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../static/assets/css/owl.carousel.min.css">
 	<link rel="stylesheet" href="../static/assets/css/slicknav.css">
@@ -24,49 +26,40 @@
 	<link rel="stylesheet" href="../static/assets/css/slick.css">
 	<link rel="stylesheet" href="../static/assets/css/nice-select.css">
 	<link rel="stylesheet" href="../static/assets/css/style.css">
+	<link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="../static/assets/img/logo/loder.png" alt="">
-                </div>
+          <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+              <i class="fas fa-fish"></i>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
     <!-- Preloader Start-->
 
 
     <main class="login-body" data-vide-bg="../static/assets/img/login-bg.mp4">
         <!-- Login Admin -->
-        <form class="form-default" action="login-bg.mp4" method="POST">
+        <form class="form-default" action="/auth" method="POST">
             
             <div class="login-form">
                 <!-- logo-login -->
-                <div class="logo-login">
-                    <a href="index.html"><img src="../static/assets/img/logo/loder.png" alt=""></a>
+                <div class="logo-login" id="fish-login">
+                    <a href="/"><i class="fas fa-fish" ></i></a>
                 </div>
-                <h2>Login Here</h2>
+                <h2>Login Admin</h2>
                 <div class="form-input">
-                    <label for="name">Email</label>
-                    <input  type="email" name="email" placeholder="Email">
-                </div>
-                <div class="form-input">
-                    <label for="name">Password</label>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="senha" placeholder="Password">
                 </div>
                 <div class="form-input pt-30">
                     <input type="submit" name="submit" value="login">
                 </div>
                 
-                <!-- Forget Password -->
-                <a href="#" class="forget">Forget Password</a>
-                <!-- Forget Password -->
-                <a href="register.html" class="registration">Registration</a>
-            </div>
         </form>
         <!-- /end login form -->
     </main>
