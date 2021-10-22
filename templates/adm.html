@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="../static/assets/css/style.css">
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
-<!--? Preloader Start -->
-<div id="preloader-active">
+   <!-- ? Preloader Start -->
+   <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
       <div class="preloader-inner position-relative">
         <div class="preloader-circle"></div>
@@ -36,23 +36,31 @@
       </div>
     </div>
   </div>
-<!-- Preloader Start -->
-<!-- Header Start -->
-<div class="header-area header-transparent">
-    <div class="main-header ">
-        <div class="header-bottom  header-sticky">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <!-- Logo -->
-                    <div class="col-xl-2 col-lg-2">
-                        <div class="logo">
-                          <a href="/"
-                            ><i class="fas fa-fish"></i> JiripocaTech</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-10 col-lg-10">
-                        <div class="menu-wrapper d-flex align-items-center justify-content-end">
-                            <!-- Main-menu -->
+  <!-- Preloader Start -->
+  <header>
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+      <div class="main-header">
+        <div class="header-bottom header-sticky">
+          <div class="container-fluid">
+            <div class="row align-items-center">
+              <!-- Logo -->
+              <div class="col-xl-2 col-lg-2">
+                <div class="logo">
+                  <a href="/"
+                    ><i class="fas fa-fish"></i> JiripocaTech</a>
+                </div>
+              </div>
+              <div class="col-xl-10 col-lg-10">
+                <div
+                  class="
+                    menu-wrapper
+                    d-flex
+                    align-items-center
+                    justify-content-end
+                  "
+                >
+                <!-- Main-menu -->
                             <div class="main-menu d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">                                                                                          
@@ -84,19 +92,8 @@
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
                                 <h1 data-animation="bounceIn" data-delay="0.2s">
-                                    {% if playlist == '' %} 
-                                    Adicionar
-                                    {% else %}
-                                    Editar 
-                                    {% endif %}                                   
+                                    {{ titulo }}
                                 </h1>
-                                <!-- breadcrumb Start-->
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    </ol>
-                                </nav>
-                                <!-- breadcrumb End -->
                             </div>
                         </div>
                     </div>
@@ -113,27 +110,35 @@
                 </div> -->
                 <div class="col-lg-8">
                     {% if playlist == '' %} 
-                     <form class="form-contact contact_form" action="/new" method="post" id="contactForm" novalidate="novalidate">
+                     <form class="form-contact contact_form" action="/new" method="POST" id="contactForm" novalidate="novalidate">
                     {% else %}
-                        <form class="form-contact contact_form" action="/edit" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="form-contact contact_form" action="/edit/{{playlist.id}}" method="POST" id="contactForm" novalidate="novalidate">
                     {% endif %}  
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="link">Link:</label>
-                                    <input value={{playlist.id_playlist}} class="form-control" name="id-playlist" id="id-playlist" type="text">
+                                    <input class="form-control" name="id-playlist" id="id-playlist" type="text" value="https://youtube.com/playlist?list={{playlist.id_playlist}}">
                                 </div>
                             </div>
+
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="titulo-playlist">Título:</label>
-                                    <input value={{playlist.titulo_playlist}} class="form-control" name="titulo-playlist" id="titulo-playlist" type="text">
+                                    <input  class="form-control" name="titulo-playlist" id="titulo-playlist" type="text" value="{{playlist.titulo_playlist}}">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
+                                    <label for="Instrutor">Instrutor:</label>
+                                    <input class="form-control" name="instrutor" id="instrutor" type="text" value="{{playlist.instrutor}}">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label for="descricao-playlist">Descrição:</label>
-                                    <textarea class="form-control w-100" name="descricao-playlist" id="descricao-playlist" cols="30" rows="9">{{playlist.descricao}} </textarea>
+                                    <textarea class="form-control w-100" name="descricao-playlist" id="descricao-playlist" cols="30" rows="9">{{playlist.descricao}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +147,7 @@
                                 {% if playlist == '' %} 
                                 Adicionar
                                 {% else %}
-                                Editar 
+                                Salvar 
                                 {% endif %} 
                             
                             </button>
@@ -153,6 +158,22 @@
             </div>
         </div>
     </section>
+    {% if deletePlaylist != undefined %}
+    <section class="modal">
+       <div id="card">
+
+          <a href="/courses" id="fechar"><i class="fa fa-times" aria-hidden="true"></i></a>
+          <h2>Confirmação</h2>
+          <hr>
+
+          <p>Deseja realmente apagar a playlist: {{playlist.titulo_playlist}} </p>
+          <div id="btns">
+             <a class="btn-cancelar" id="close" href="/courses">Cancelar</a>
+             <a class="btn-apagar" href="/delete/{{playlist.id}}">Apagar</a>
+          </div>
+       </div>
+    </section>
+    {% endif %}
     <!-- Contact Area End -->
 </main>
   <div id="back-top" >

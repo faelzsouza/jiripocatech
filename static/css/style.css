@@ -2,6 +2,14 @@ html{
     scroll-behavior: smooth;
 }
 
+body > main > video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 div#preloader-active div div div i {
     font-size: 4rem;
     color: #5d74ff;
@@ -16,24 +24,126 @@ main section.team-area div.container div.team-active div.single-cat div.cat-icon
     border-radius: 50%;
 }
 
-/* main section.slider-area.slider-area2  div.slider-active div.single-slider.slider-height2 div.container div img {
-    border-top: 100rem;
-    width: 30%;
-    border-radius: 10%;
+#titulo-curso{
+    height: 6rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+#descricao-curso{
+    height: 20rem;
+    overflow-y: auto;
+}
+
+#fish-login{
+    font-size: 6rem;
+    text-align: center;
+}
+
+section.modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: linear-gradient(141deg, rgba(178,1,247,1) 7%, rgba(77,5,245,0.9528186274509804) 100%);
+    z-index: 1;
     display: flex;
-    float:right;
-    flex-wrap: wrap;
-    }     */
-    
-    
-    
-/*     
-main section.slider-area.slider-area2  img {
-    border-top: 100rem;
-    width: 10%;
-    border-radius: 10%;
-    float:right;
-}  */
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+  }
+  
+  section.modal div#card{
+    width: 30rem;
+    position: relative;
+    background-color: #fff;
+    border-radius: .5rem;
+  }
+  
+  section.modal div#card h2{
+    padding: 2rem;
+    margin: 0;
+    color: #0130ec;
+  }
+  
+  section.modal div#card a#fechar{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 2rem;
+    color: #ff0101;
+    padding: 1.5rem;
+  }
+  
+  section.modal div#card a#fechar:hover{
+    color: #fd9b9b;
+  }
+  
+  section.modal div#card hr{
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  section.modal div#card p{
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  section.modal div#card div#btns{
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem 2rem 2rem;
+  }
+  
+  section.modal div#card div#btns a{
+    text-decoration: none;
+    padding: .9rem;
+    border-radius: .5rem;
+    width: 7rem;
+    text-align: center;
+  }
+  
+  section.modal div#card div#btns a.btn-apagar{
+    background-color: #fff;
+    color: #ff0101;
+    border: solid 1px #ff0101;
+    margin-left: 1rem;
+    transition: all .5s ease-out;
+  }
+  
+  section.modal div#card div#btns a.btn-apagar:hover{
+    background-color: #ff0101;
+    color: #fff;
+  }
+  
+  section.modal div#card div#btns a.btn-cancelar{
+    background-color: #fff;
+    color: #0130ec;
+    border: solid 1px #0130ec;
+    transition: all .5s ease-out;
+  }
+  
+  section.modal div#card div#btns a.btn-cancelar:hover{
+    background-color: #0130ec;
+    color: #fff;
+  }
 
+  body > main > section.slider-area > div > div > div > div > div > div > div > div > p > a {
+      color: rgb(0, 0, 221);
+  }
 
+  #card-playlist > div > div {
+      font-size: 3rem;
+      justify-content: center;
+  }
 
+  #card-playlist > div > div > a {
+      width: 20rem
+  }
+
+  body > main > section.about-area1.fix.pt-10 > div > div.left-content1 > div.about-icon > i {
+      font-size: 3rem
+  }
